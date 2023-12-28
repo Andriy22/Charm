@@ -9,6 +9,11 @@ public class Animal : MonoBehaviour
     [SerializeField] private AnimalMovement _movement;
     [SerializeField] private AnimalHealth _health;
 
+    [SerializeField] private CowardiceState _cowardiceState = CowardiceState.Neutral;
+    private Charm _currentCharm = null;
+
+    public CowardiceState CowardiceState { get => _cowardiceState; set => _cowardiceState = value; }
+
     public event Action<Charm> OnCharmWear;
     public event Action<Charm> OnCharmDrop;
 
