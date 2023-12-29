@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +9,15 @@ public class Health : MonoBehaviour
     [SerializeField] private UnityEvent<int> _damageTaken = new();
     [SerializeField] private UnityEvent<int> _healed = new();
     [SerializeField] private UnityEvent<int> _healthChanged = new();
+
+    public virtual int MaxHealth { get => _baseHealth; }
+    public int CurrentHealth => _currentHealth;
+
+    private void Start() 
+    {
+        _currentHealth = MaxHealth;    
+    }
+
     public virtual void TakeDamage(int damage)
     {
         _currentHealth -= damage;
@@ -31,9 +38,9 @@ public class Health : MonoBehaviour
         _healed.Invoke(amount);
         _healthChanged.Invoke(_currentHealth);
 
-        if (_currentHealth > _baseHealth)
+        if (_currentHealth > MaxHealth)
         {
-            _currentHealth = _baseHealth;
+            _currentHealth = MaxHealth;
         }
     }
 

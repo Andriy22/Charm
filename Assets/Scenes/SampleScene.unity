@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 795144654}
   - component: {fileID: 795144656}
   - component: {fileID: 795144657}
+  - component: {fileID: 795144658}
   m_Layer: 0
   m_Name: Animal
   m_TagString: Untagged
@@ -750,8 +751,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Immortal Object
+  _stats:
+    _health: 100
+    _speed: 2
+    _damage: 10
   _movement: {fileID: 795144656}
-  _health: {fileID: 0}
+  _health: {fileID: 795144658}
+  _cowardiceState: 1
+--- !u!114 &795144658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795144651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5226a78a080bffa4987c584e29a04a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseHealth: 100
+  _currentHealth: 100
+  _damageTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  _healed:
+    m_PersistentCalls:
+      m_Calls: []
+  _healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &815645915
 GameObject:
   m_ObjectHideFlags: 0

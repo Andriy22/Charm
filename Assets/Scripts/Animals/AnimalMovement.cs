@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimalMovement : MonoBehaviour
+public class AnimalMovement : MonoBehaviour, IAnimalPart
 {
     [SerializeField] private float _speed = 1f;
     [SerializeField] private float _distance = 1f;
@@ -11,6 +9,14 @@ public class AnimalMovement : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector2 _destination;
     private float _timer;
+    private Animal _animal;
+
+    public Animal Animal => _animal;
+
+    public void SetUp(Animal animal)
+    {
+        _animal = animal;
+    }
 
     private void Awake()
     {
