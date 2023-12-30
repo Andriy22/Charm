@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
 
     [SerializeField] private UnityEvent<int> _damageTaken = new();
     [SerializeField] private UnityEvent<int> _healed = new();
-    [SerializeField] private UnityEvent<int> _healthChanged = new();
+    [SerializeField] private UnityEvent<int, int> _healthChanged = new();
 
     public virtual int MaxHealth { get => _baseHealth; }
     public int CurrentHealth => _currentHealth;
@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
     private void Start() 
     {
         _currentHealth = MaxHealth;    
+        _healthChanged.Invoke(_currentHealth, MaxHealth);
     }
 
     public virtual void TakeDamage(int damage)
@@ -23,7 +24,7 @@ public class Health : MonoBehaviour
         _currentHealth -= damage;
 
         _damageTaken.Invoke(damage);
-        _healthChanged.Invoke(_currentHealth);
+        _healthChanged.Invoke(_currentHealth, MaxHealth);
 
         if (_currentHealth <= 0)
         {
@@ -36,12 +37,13 @@ public class Health : MonoBehaviour
         _currentHealth += amount;
 
         _healed.Invoke(amount);
-        _healthChanged.Invoke(_currentHealth);
 
         if (_currentHealth > MaxHealth)
         {
             _currentHealth = MaxHealth;
         }
+        
+        _healthChanged.Invoke(_currentHealth, MaxHealth);
     }
 
     private void Die()

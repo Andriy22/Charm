@@ -14,6 +14,7 @@ public class DragableCharm : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private Camera _camera;
 
     private Vector3 _velocity;
+    private Animal _currentAnimal;
 
     private void Awake()
     {
@@ -48,7 +49,7 @@ public class DragableCharm : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
         if(animal != null)
         {
-            //_charm.OnWear(animal);
+            _charm.Wear(animal);
             gameObject.SetActive(false);
             Debug.Log($"found animal {animal}");
 
@@ -61,6 +62,7 @@ public class DragableCharm : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private void OnCharmDrop(Charm obj)
     {
         gameObject.SetActive(true);
+        _currentAnimal.OnCharmDrop -= OnCharmDrop;
     }
 
     private void Update()

@@ -7,11 +7,13 @@ public class AnimalMovement : MonoBehaviour, IAnimalPart
     [SerializeField] private float _timeToChangeDestination = 2f;
 
     private Rigidbody2D _rigidbody2D;
+    private Vector2 _velocity;
     private Vector2 _destination;
     private float _timer;
     private Animal _animal;
 
     public Animal Animal => _animal;
+    public Vector2 Velocity => _velocity;
 
     public void SetUp(Animal animal)
     {
@@ -50,9 +52,9 @@ public class AnimalMovement : MonoBehaviour, IAnimalPart
         float progress = Mathf.Clamp01(_timer / _timeToChangeDestination);
 
         Vector2 direction = (_destination - (Vector2)transform.position).normalized;
-        Vector2 velocity = direction * _speed * progress;
+        _velocity = direction * _speed * progress;
 
-        _rigidbody2D.velocity = velocity;
+        _rigidbody2D.velocity = _velocity;
     }
 
     private void SetRandomDestination()

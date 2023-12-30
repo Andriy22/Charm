@@ -11,7 +11,10 @@ public class Enemy : MonoBehaviour
 
     private Charm _currentCharm = null;
 
-    public Stats Stats => _stats + _currentCharm.Stats;
+    public Stats Stats => _currentCharm == null 
+        ? _stats 
+        : _stats + _currentCharm.Stats;
+        
     public event Action<Charm> OnCharmDrop;
 
     private void Awake()

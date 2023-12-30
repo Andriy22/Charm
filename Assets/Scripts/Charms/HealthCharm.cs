@@ -7,11 +7,12 @@ public class HealthCharm : Charm
 
     public override Stats Stats => new Stats(_health, 0, 0);
 
-    public override void OnDrop(Animal animal)
+    protected override void OnDrop(Animal animal)
     {
     }
 
-    public override void OnWear(Animal animal)
+    protected override void OnWear(Animal animal)
     {
+        animal.Health.Heal(_health);
     }
 }

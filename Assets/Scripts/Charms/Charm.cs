@@ -7,6 +7,18 @@ public abstract class Charm : ScriptableObject
 
     public abstract Stats Stats { get; }
 
-    public abstract void OnWear(Animal animal);
-    public abstract void OnDrop(Animal animal);
+    public void Wear(Animal animal)
+    {
+        animal.CurrentCharm = this;
+        OnWear(animal);
+    }
+
+    public void Drop(Animal animal)
+    {
+        animal.CurrentCharm = null;
+        OnDrop(animal);
+    }
+
+    protected abstract void OnWear(Animal animal);
+    protected abstract void OnDrop(Animal animal);
 }
