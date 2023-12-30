@@ -58,7 +58,7 @@ public class AnimalMovement : MonoBehaviour, IAnimalPart
         float progress = Mathf.Clamp01(_timer / _timeToChangeDestination);
 
         Vector2 direction = (_destination - (Vector2)transform.position).normalized;
-        _velocity = direction * _speed * progress;
+        _velocity = direction * Animal.Stats.Speed * progress;
 
         _rigidbody2D.velocity = _velocity;
     }

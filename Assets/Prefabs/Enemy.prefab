@@ -212,9 +212,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Immortal Object
   _stats:
-    _health: 100
+    _health: 10
     _speed: 2
-    _damage: 10
+    _damage: 2
   _movement: {fileID: 2613718922278970774}
   _health: {fileID: 5519552318253458566}
   _attack: {fileID: 7583892859920507110}

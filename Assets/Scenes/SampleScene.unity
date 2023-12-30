@@ -705,7 +705,7 @@ MonoBehaviour:
   _stats:
     _health: 100
     _speed: 3
-    _damage: 10
+    _damage: 5
   _movement: {fileID: 795144656}
   _health: {fileID: 795144658}
   _attack: {fileID: 795144659}
@@ -757,7 +757,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _isInvulnerable: 1
+  _isInvulnerable: 0
 --- !u!114 &795144659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,6 +944,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 5416234239975399687, guid: 6a387406ecef9184ba23ca0026a063f5, type: 3}
   _initialSpawnCount: 5
+  _spawnDelay: 10
+  _onWaveCleared:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &834748219
 Transform:
   m_ObjectHideFlags: 0
@@ -1095,6 +1099,7 @@ GameObject:
   - component: {fileID: 895663929}
   - component: {fileID: 895663928}
   - component: {fileID: 895663932}
+  - component: {fileID: 895663933}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1197,6 +1202,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24c3412cdc385641834ab391c289aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &895663933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895663927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79b065ab1572706b99db46f368c9f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onMoneyChange:
+    m_PersistentCalls:
+      m_Calls: []
+  _onScoreChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &909292553
 GameObject:
   m_ObjectHideFlags: 0
