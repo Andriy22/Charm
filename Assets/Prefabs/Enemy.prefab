@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 0
-  _stun: 0
+  _stun: 1
   _kick: 0
   _onAttack:
     m_PersistentCalls:

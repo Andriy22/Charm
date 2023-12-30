@@ -74,6 +74,11 @@ public class Animal : MonoBehaviour, IStunable
         _stunned = false;
     }
 
+    private void Start()
+    {
+        AnimalInfoManager.Instance.DisplayTooltip(this);
+    }
+
     private void Awake() {
         _movement.SetUp(this);
         _health.SetUp(this);
