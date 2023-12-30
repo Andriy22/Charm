@@ -757,6 +757,7 @@ MonoBehaviour:
     _damage: 10
   _movement: {fileID: 795144656}
   _health: {fileID: 795144658}
+  _attack: {fileID: 0}
   _cowardiceState: 1
 --- !u!114 &795144658
 MonoBehaviour:
@@ -1116,6 +1117,9 @@ GameObject:
   - component: {fileID: 1432885801}
   - component: {fileID: 1432885800}
   - component: {fileID: 1432885799}
+  - component: {fileID: 1432885806}
+  - component: {fileID: 1432885805}
+  - component: {fileID: 1432885804}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1265,6 +1269,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1432885804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432885798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d45be0a4a3d0040b0a1e05fb803289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1432885805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432885798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2758dfb03b2d2214eb601f13ce5fcc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseHealth: 100
+  _currentHealth: 100
+  _damageTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  _healed:
+    m_PersistentCalls:
+      m_Calls: []
+  _healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1432885806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432885798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b47591aca81ad40b30587c92c6553f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Immortal Object
+  _stats:
+    _health: 0
+    _speed: 0
+    _damage: 0
+  _movement: {fileID: 1432885799}
+  _health: {fileID: 1432885805}
+  _attack: {fileID: 1432885804}
 --- !u!1 &2039375450
 GameObject:
   m_ObjectHideFlags: 0
