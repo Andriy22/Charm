@@ -33,10 +33,13 @@ public class EnemySpawner : MonoBehaviour
                 // spawn with charm
             }
 
-            enemy.Health.OnDead += OnEmenyDeath;
+            enemy.Health.OnDead += () => 
+            {
+                OnEmenyDeath();
+                Score.OnEnemyDeath(enemy);
+            };
 
             _currentSpawnedCount++;
-                
         }
 
     }
