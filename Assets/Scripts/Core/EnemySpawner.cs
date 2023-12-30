@@ -8,39 +8,46 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Enemy _enemyPrefab;
     [SerializeField] private int _initialSpawnCount = 5;
 
-    private int _currentSpawnCount = 0;
-    private List<Enemy> _enemies = new List<Enemy>();
+    private int _currentSpawnedCount = 0;
+    private int _amountOfEnemiesToSpawn = 0;
 
-    void Start()
+    private void Start()
     {
-        if (useTimeBasedSpawn)
-        {
-            StartCoroutine(SpawnEnemyWithInterval());
-        }
-    }
+        _amountOfEnemiesToSpawn = _initialSpawnCount;
 
-    private IEnumerator SpawnEnemyWithInterval()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(_spawnInterval);
-            SpawnEnemy();
-        }
+        SpawnEnemies(_amountOfEnemiesToSpawn);
     }
 
     private void SpawnEnemies(int count)
     {
-        for (int i = 0; i < _initialSpawnCount; i++)
+        for (int i = 0; i < count; i++)
         {
+            _amountOfEnemiesToSpawn += Random.Range(1, 3);
             var randomPosition = Random.Range(0, Mathf.PI * 2);
 
             var randomDirection = new Vector2(Mathf.Cos(randomPosition), Mathf.Sin(randomPosition));
             var enemy = Instantiate(_enemyPrefab, randomDirection * 10, Quaternion.identity);
 
-            enemy.Health
+            if (Random.Range(0,100) <= 10)
+            {
+                // spawn with charm
+            }
+
+            enemy.Health.OnDead += OnEmenyDeath;
+
+            _currentSpawnedCount++;
+                
         }
 
     }
 
+    private void OnEmenyDeath()
+    {
+        _currentSpawnedCount--;
 
+        if (_currentSpawnedCount == 0)
+        {
+            SpawnEnemies(_amountOfEnemiesToSpawn);
+        }
+    }
 }

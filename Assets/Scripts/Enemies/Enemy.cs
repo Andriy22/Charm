@@ -22,6 +22,10 @@ public class Enemy : MonoBehaviour, IStunable
 
     public event Action<Charm> OnCharmDrop;
 
+    public EnemyMovement Movement { get => _movement; }
+    public EnemyHealth Health { get => _health; }
+    public EnemyAttack Attack { get => _attack; }
+
     public void Stun(float time)
     {
         if(_stunned)
