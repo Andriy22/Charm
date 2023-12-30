@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,8 +11,12 @@ public class Health : MonoBehaviour
     [SerializeField] private UnityEvent<int> _healed = new();
     [SerializeField] private UnityEvent<int, int> _healthChanged = new();
 
+    [SerializeField]  private bool _isInvulnerable = false;
+
     public virtual int MaxHealth { get => _baseHealth; }
     public int CurrentHealth => _currentHealth;
+
+    public event Action OnDead;
 
     private void Start() 
     {
@@ -21,6 +26,11 @@ public class Health : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
+        if (_isInvulnerable)
+        {
+            return;
+        }
+
         _currentHealth -= damage;
 
         _damageTaken.Invoke(damage);
@@ -48,6 +58,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
+        OnDead?.Invoke();
         Destroy(gameObject);
     }
 }
