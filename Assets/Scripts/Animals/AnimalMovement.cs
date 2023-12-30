@@ -28,6 +28,12 @@ public class AnimalMovement : MonoBehaviour, IAnimalPart
    
     private void FixedUpdate()
     {
+        if(Animal.Stunned)
+        {
+            Debug.Log("can't move");
+            return;
+        }
+
         MoveToDestination();
     }
 
