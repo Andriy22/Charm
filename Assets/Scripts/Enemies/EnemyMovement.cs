@@ -23,7 +23,17 @@ public class EnemyMovement : MonoBehaviour, IEnemyPart
 
     private void FixedUpdate()
     {
-        Vector3 direction = (center - transform.position).normalized;
+        if(Enemy.Stunned)
+        {
+            return;
+        }
+
+        Move();
+    }
+
+    private void Move()
+    {
+        Vector3 direction = (MainAnimal.Animal.transform.position - transform.position).normalized;
         Vector3 velocity = direction * (Enemy?.Stats.Speed ?? _speed);
 
         _rigidbody2D.velocity = velocity;

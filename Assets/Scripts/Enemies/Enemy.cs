@@ -1,7 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IStunable
 {
     [SerializeField] private string _name = "Immortal Object";
     [SerializeField] private Stats _stats;
@@ -10,12 +11,33 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyAttack _attack;
 
     private Charm _currentCharm = null;
+    private bool _stunned;
+    private Coroutine _stunnedCoroutine;
 
     public Stats Stats => _currentCharm == null 
         ? _stats 
         : _stats + _currentCharm.Stats;
-        
+
+    public bool Stunned => _stunned;
+
     public event Action<Charm> OnCharmDrop;
+
+    public void Stun(float time)
+    {
+        if(_stunned)
+        {
+            StopCoroutine(_stunnedCoroutine);
+        }
+
+        _stunned =  true;
+        _stunnedCoroutine = StartCoroutine(WaitStun(time));
+    }
+
+    private IEnumerator WaitStun(float amount)
+    {
+        yield return new WaitForSeconds(amount);
+        _stunned = false;
+    }
 
     private void Awake()
     {

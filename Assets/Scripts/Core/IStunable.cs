@@ -1,6 +1,6 @@
 public interface IStunable
 {
-    bool Stuned { get; }
+    bool Stunned { get; }
 
     void Stun(float time);
 }

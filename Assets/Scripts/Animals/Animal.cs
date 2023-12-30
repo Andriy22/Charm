@@ -52,7 +52,7 @@ public class Animal : MonoBehaviour, IStunable
     public AnimalHealth Health { get => _health; }
     public AnimalAttack Attack { get => _attack; }
 
-    public bool Stuned => _stunned;
+    public bool Stunned => _stunned;
 
     public event Action<Charm> OnCharmWear;
     public event Action<Charm> OnCharmDrop;
@@ -64,7 +64,7 @@ public class Animal : MonoBehaviour, IStunable
             StopCoroutine(_stunnedCoroutine);
         }
 
-        _stunned =  true;
+        _stunned = true;
         _stunnedCoroutine = StartCoroutine(WaitStun(time));
     }
 

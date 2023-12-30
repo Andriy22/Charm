@@ -8,6 +8,7 @@ public class AnimalAttack : Attack<EnemyHealth>, IAnimalPart
     public Animal Animal => _animal;
 
     public override int Damage => Animal.Stats.Damage;
+    public override bool CanAttack => base.CanAttack && !Animal.Stunned;
 
     public void SetUp(Animal animal)
     {
