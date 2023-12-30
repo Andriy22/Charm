@@ -7,6 +7,7 @@ public class Animal : MonoBehaviour
     [SerializeField] private Stats _stats;
     [SerializeField] private AnimalMovement _movement;
     [SerializeField] private AnimalHealth _health;
+    [SerializeField] private AnimalAttack _attack;
 
     [SerializeField] private CowardiceState _cowardiceState = CowardiceState.Neutral;
     private Charm _currentCharm = null;
@@ -18,6 +19,7 @@ public class Animal : MonoBehaviour
 
     private void Awake() {
         _movement.SetUp(this);
-        _health.SetUp(this);   
+        _health.SetUp(this);
+        _attack.SetUp(this);
     }
 }

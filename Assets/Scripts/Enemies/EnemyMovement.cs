@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour, IEnemyPart
 {
-    [SerializeField] private float _speed = 1.0f;
+    private Enemy _enemy;
+    public Enemy Enemy => _enemy;
 
-    private Vector3 _position;
     private Rigidbody2D _rigidbody2D;
     private Vector3 center;
 
+    [SerializeField] private float _speed = 1f;
+
+    public void SetUp(Enemy enemy)
+    {
+        _enemy = enemy;
+    }
+
     private void Awake()
     {
-        _position = transform.position;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         center = Vector3.zero;
     }
@@ -20,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 direction = (center - transform.position).normalized;
-        Vector3 velocity = direction * _speed;
+        Vector3 velocity = direction * (Enemy?.Stats.Speed ?? _speed);
 
         _rigidbody2D.velocity = velocity;
     }
